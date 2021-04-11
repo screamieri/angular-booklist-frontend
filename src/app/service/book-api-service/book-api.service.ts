@@ -17,7 +17,7 @@ export class BookApiService {
   constructor(private http: HttpClient) { }
 
   getBooksByTitle(title: string): Observable<Book[]>{
-    this.booksFound = this.http.get<ApiResponse>(this.requestUrl + title + '&maxResults=10&printType=books&langRestrict=it')
+    this.booksFound = this.http.get<ApiResponse>(this.requestUrl + title + '&maxResults=30&printType=books&langRestrict=it')
     .pipe(
       map(
         response => response.items

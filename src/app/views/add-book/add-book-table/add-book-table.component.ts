@@ -12,6 +12,7 @@ export class AddBookTableComponent implements OnInit {
 
   @Input('books')
   books : Book[];
+  p: number = 1;
   
   constructor(private bookApiService: BookApiService) {  }
 

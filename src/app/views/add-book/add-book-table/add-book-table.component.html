@@ -1,21 +1,21 @@
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
 <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col" class="text-center">Copertina</th>
-        <th scope="col" style="width: 30%" class="text-center">Titolo</th>
-        <th scope="col" class="text-center">Autore</th>
-        <th scope="col" class="text-center">Genere</th>        
-        <th scope="col" style="width: 20%" class="text-center">Azioni</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let book of books">
-        <td class="text-center"><img src="{{book.imageUrl}}" alt=""></td>
-        <th scope="row" class="text-center">{{book.title}}</th>
-        <td class="text-center">{{book.author}}</td>
-        <td class="text-center">{{book.genre}}</td>        
-        <td class="text-center"><button class="btn btn-primary">Aggiungi ai tuoi libri</button></td>
-      </tr>     
-    </tbody>
-  </table>
-
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" class="text-center">Copertina</th>
+      <th scope="col" style="width: 30%" class="text-center">Titolo</th>
+      <th scope="col" class="text-center">Autore</th>
+      <th scope="col" class="text-center">Genere</th>
+      <th scope="col" style="width: 20%" class="text-center">Azioni</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+      <td class="text-center"><img src="{{book.imageUrl}}" alt=""></td>
+      <th scope="row" class="text-center">{{book.title}}</th>
+      <td class="text-center">{{book.author}}</td>
+      <td class="text-center">{{book.genre}}</td>
+      <td class="text-center"><button class="btn btn-primary">Aggiungi ai tuoi libri</button></td>
+    </tr>
+  </tbody>
+</table>
