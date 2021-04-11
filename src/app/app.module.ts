@@ -17,6 +17,7 @@ import { AddBookComponent } from './views/add-book/add-book.component';
 import { AddBookTableComponent } from './views/add-book/add-book-table/add-book-table.component';
 import { AddBookSearchComponent } from './views/add-book/add-book-search/add-book-search.component';
 import { BookApiService } from './service/book-api-service/book-api.service';
+import { PlaceholderComponent } from './shared/placeholder/placeholder/placeholder.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { BookApiService } from './service/book-api-service/book-api.service';
     FooterComponent,  
     AddBookComponent,
     AddBookSearchComponent,
-    AddBookTableComponent
+    AddBookTableComponent,
+    PlaceholderComponent
   ],
   imports: [
     BrowserModule,

@@ -13,9 +13,6 @@ export class Book implements Book {
     imageUrl: string;
 
     constructor(responseItem: Item) {
-
-        console.log(responseItem.volumeInfo.industryIdentifiers);
-
         if(responseItem.volumeInfo.industryIdentifiers !== undefined){
             for (let identifier of responseItem.volumeInfo.industryIdentifiers) {
                 switch (identifier.type) {

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Book } from 'src/app/model/book.model';
+import { iBook } from 'src/app/model/model-interface/ibook.model';
 
 @Component({
   selector: 'app-book-item',
@@ -9,7 +9,7 @@ import { Book } from 'src/app/model/book.model';
 export class BookItemComponent implements OnInit {
 
   @Input('book')
-  book : Book;
+  book : iBook;
 
   constructor() { }
 

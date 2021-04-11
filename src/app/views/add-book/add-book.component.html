@@ -2,6 +2,7 @@
         <div class="col-md-12">
             <app-add-book-search (booksEmitted)="onDisplayBooks($event)"></app-add-book-search>
             <hr>
-            <app-add-book-table [books]="booksToDisplay"></app-add-book-table>
+            <app-add-book-table [books]="booksToDisplay" *ngIf="booksToDisplay?.length > 0"></app-add-book-table>
+            <app-placeholder *ngIf="booksToDisplay === undefined" [message]="placeholderMessage"></app-placeholder>
         </div>
     </div>

@@ -9,6 +9,7 @@ import { Book } from 'src/app/model/classes/book.model';
 export class AddBookComponent implements OnInit {
 
   booksToDisplay: Book[];
+  placeholderMessage: string ='Inserisci il titolo o l\'autore di un libro per mostrare l\'elenco!';
 
   constructor() { }
 
