@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';  
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -25,8 +26,8 @@ import { BookApiService } from './service/book-api-service/book-api.service';
     BookItemComponent,
     FooterComponent,  
     AddBookComponent,
-    AddBookTableComponent,
-    AddBookSearchComponent
+    AddBookSearchComponent,
+    AddBookTableComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +35,8 @@ import { BookApiService } from './service/book-api-service/book-api.service';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    CommonModule
   ],
   providers: [UserService, BookService, BookApiService],
   bootstrap: [AppComponent]
