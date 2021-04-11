@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Book  } from '../../model/book.model';
+import { iBook  } from '../../model/model-interface/ibook.model';
 
 
 
@@ -14,8 +14,8 @@ export class BookService {
 
   constructor(private http: HttpClient) {   }
 
-  getAllBooksByUserId(id : string): Observable<Book[]>{
-    return this.http.get<Book[]>(this.requestUrl + id + "/books/");
+  getAllBooksByUserId(id : string): Observable<iBook[]>{
+    return this.http.get<iBook[]>(this.requestUrl + id + "/books/");
   }
   
 }

@@ -4,12 +4,18 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { BookListComponent } from './book-list/book-list.component';
-import { BookItemComponent } from './book-list/book-item/book-item.component';
+import { BookListComponent } from './views/book-list/book-list.component';
+import { BookItemComponent } from './views/book-list/book-item/book-item.component';
 import { FooterComponent } from './footer/footer.component';
 import { UserService } from './service/user-service/user.service';
 import { BookService } from './service/book-service/book.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { AddBookComponent } from './views/add-book/add-book.component';
+import { AddBookTableComponent } from './views/add-book/add-book-table/add-book-table.component';
+import { AddBookSearchComponent } from './views/add-book/add-book-search/add-book-search.component';
+import { BookApiService } from './service/book-api-service/book-api.service';
 
 @NgModule({
   declarations: [
@@ -17,16 +23,20 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     BookListComponent,
     BookItemComponent,
-    FooterComponent
-   
+    FooterComponent,  
+    AddBookComponent,
+    AddBookTableComponent,
+    AddBookSearchComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+    RouterModule
   ],
-  providers: [UserService, BookService],
+  providers: [UserService, BookService, BookApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

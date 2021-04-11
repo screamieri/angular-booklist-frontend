@@ -1,10 +1,11 @@
-import { Book } from "./book.model";
+import { iBook } from "./ibook.model";
 
-export interface User{
+export interface iUser{
     id : string;
     firstName : string;
     lastName : string;
     email : string;
     password : string;
-    books : Book[];
+    token : string;
+    books : iBook[];
 }

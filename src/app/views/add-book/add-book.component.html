@@ -1,0 +1,7 @@
+ <div class="justify-content-center">
+        <div class="col-md-12">
+            <app-add-book-search (booksEmitted)="onDisplayBooks($event)"></app-add-book-search>
+            <hr>
+            <app-add-book-table [books]="booksToDisplay"></app-add-book-table>
+        </div>
+    </div>
