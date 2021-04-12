@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/model/classes/book.model';
+import { BookApiService } from 'src/app/service/book-api-service/book-api.service';
 
 @Component({
   selector: 'app-add-book',
@@ -11,13 +12,14 @@ export class AddBookComponent implements OnInit {
   booksToDisplay: Book[];
   placeholderMessage: string ='Inserisci il titolo o l\'autore di un libro per mostrare l\'elenco!';
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private bookApiService: BookApiService) {
+    
   }
 
-  onDisplayBooks(booksList: Book[]){
-    this.booksToDisplay = booksList;  
+  ngOnInit() {
+    this.bookApiService.booksEmitted.subscribe(
+      data => this.booksToDisplay = data
+    )
   }
   
 

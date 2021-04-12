@@ -1,5 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Book } from 'src/app/model/classes/book.model';
+import { Component, OnInit} from '@angular/core';
 import { BookApiService } from 'src/app/service/book-api-service/book-api.service';
 
 @Component({
@@ -10,7 +9,6 @@ import { BookApiService } from 'src/app/service/book-api-service/book-api.servic
 export class AddBookSearchComponent implements OnInit {
 
   bookTitle: string;
-  @Output() booksEmitted = new EventEmitter<Book[]>();
 
   constructor(private bookApiService: BookApiService) { }
 
@@ -21,7 +19,7 @@ export class AddBookSearchComponent implements OnInit {
   onChange(title: string) {
     this.bookApiService.getBooksByTitle(title)
     .subscribe(data=> {
-      this.booksEmitted.emit(data);
+      this.bookApiService.booksEmitted.emit(data);
     });
   }
 
