@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { iBook  } from '../../model/model-interface/ibook.model';
+import { Book  } from '../../model/classes/book.model';
+import { map } from 'rxjs/operators';
+import { iBook } from 'src/app/model/model-interface/ibook.model';
+
 
 
 
@@ -16,6 +19,10 @@ export class BookService {
 
   getAllBooksByUserId(id : string): Observable<iBook[]>{
     return this.http.get<iBook[]>(this.requestUrl + id + "/books/");
+  }
+
+  addBookToLibrary(id: string, book: Book){
+    return this.http.put<Book>(this.requestUrl + id + "/book/add", book);
   }
   
 }

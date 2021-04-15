@@ -1,5 +1,6 @@
 import { Item } from '../model-interface/response/item.model';
 
+
 export class Book implements Book {
 
     isbn: string;
@@ -47,7 +48,11 @@ export class Book implements Book {
 
 
         this.description = responseItem.volumeInfo.description ?? 'undefined';
-        this.publishDate = responseItem.volumeInfo.publishDate;
+
+
+        this.publishDate = new Date(responseItem.volumeInfo.publishedDate);
+
+
 
         if (typeof responseItem.volumeInfo.imageLinks !== 'undefined') {
             this.imageUrl = responseItem.volumeInfo.imageLinks.thumbnail;

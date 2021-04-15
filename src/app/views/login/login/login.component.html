@@ -1,0 +1,26 @@
+<form [formGroup]="form" class="m-2 mb-3">
+  <fieldset>
+    <div class="form-field form-group">
+      <label for="email">Email:</label>
+      <input
+        class="form-control"
+        name="email"
+        id="email"
+        formControlName="email"
+      />
+    </div>
+    <div class="form-field form-group">
+      <label for="password">Password:</label>
+      <input
+        class="form-control"
+        name="password"
+        id="password"
+        formControlName="password"
+        type="password"
+      />
+    </div>
+  </fieldset>
+  <div class="form-buttons">
+    <button class="btn btn-primary" (click)="login()">Login</button>
+  </div>
+</form>

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';  
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -11,7 +11,7 @@ import { BookItemComponent } from './views/book-list/book-item/book-item.compone
 import { FooterComponent } from './footer/footer.component';
 import { UserService } from './service/user-service/user.service';
 import { BookService } from './service/book-service/book.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { AddBookComponent } from './views/add-book/add-book.component';
@@ -19,6 +19,10 @@ import { AddBookTableComponent } from './views/add-book/add-book-table/add-book-
 import { AddBookSearchComponent } from './views/add-book/add-book-search/add-book-search.component';
 import { BookApiService } from './service/book-api-service/book-api.service';
 import { PlaceholderComponent } from './shared/placeholder/placeholder/placeholder.component';
+import { LoginComponent } from './views/login/login/login.component';
+import { AuthService } from './service/auth-service/auth.service';
+import { AuthInterceptor } from './service/auth.interceptor';
+import { LoginActivate } from './guards/loginactivate.guard';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,8 @@ import { PlaceholderComponent } from './shared/placeholder/placeholder/placehold
     AddBookComponent,
     AddBookSearchComponent,
     AddBookTableComponent,
-    PlaceholderComponent
+    PlaceholderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +45,15 @@ import { PlaceholderComponent } from './shared/placeholder/placeholder/placehold
     AppRoutingModule,
     RouterModule,
     CommonModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule
   ],
-  providers: [UserService, BookService, BookApiService],
+  providers: [UserService, BookService, BookApiService, AuthService, LoginActivate,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,7 +5,7 @@ export interface VolumeInfo{
     title: string;
     authors: string[];
     publisher: string;
-    publishDate: Date;
+    publishedDate: Date;
     description: string;
     industryIdentifiers: IndustryIdentifier[];
     categories: string[];
