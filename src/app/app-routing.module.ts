@@ -9,7 +9,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'books', component: BookListComponent, data:{requiresLogin: true}, canActivate:[LoginActivate]},
   { path:'add', component: AddBookComponent, data:{requiresLogin: true}, canActivate:[LoginActivate]},
-  { path: 'login', component: LoginComponent},
   { path: '', component: LoginComponent}
 ];
 

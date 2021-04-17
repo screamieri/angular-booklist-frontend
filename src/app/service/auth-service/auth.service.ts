@@ -14,9 +14,9 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string) {
+  login(username: string, password: string) {
     return this.http
-      .post<iUser>('http://localhost:8080/authenticate', { email, password }, {responseType: 'text' as 'json'}).pipe(
+      .post<iUser>('http://localhost:8080/authenticate', { username, password }).pipe(
         tap(res => this.setSession(res)),
         shareReplay()
       )      
@@ -31,14 +31,14 @@ export class AuthService {
 
   private setSession(authResult) {
 
-    let tokenInfo = this.getDecodedAccessToken(authResult);    
+    let tokenInfo = this.getDecodedAccessToken(authResult.token);    
     //const expiresAt = moment().add(authResult.expires_at, 'second');
     //console.log(tokenInfo.exp);
     //const expiresAt = moment().add(tokenInfo.exp, 'second');
     //console.log(JSON.stringify(expiresAt.valueOf()));
     const expiresAt = moment(tokenInfo.exp);
 
-    localStorage.setItem('id_token', authResult);
+    localStorage.setItem('id_token', authResult.token);
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
     localStorage.setItem('userId', tokenInfo.userId);
 
