@@ -2,13 +2,13 @@
   <div class="container">
     <a href="#" class="navbar-brand"  routerLink="/" routerLinkActive="active">BookList App</a>
     <div class="container-fluid" id="navbarNav">
-      <ul class="nav navbar-nav" *ngIf="!isLoggedIn()">
+      <ul class="nav navbar-nav" *ngIf="isLoggedOut()">
         <li class="nav-item">
           <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
         </li>
       </ul>
       
-      <ul class="nav navbar-nav" *ngIf="isLoggedIn()">
+      <ul class="nav navbar-nav" *ngIf="!isLoggedOut()" >
           <li class="nav-item">
             <a class="nav-link" routerLink="/books" routerLinkActive="active">I miei libri</a>
           </li>
@@ -16,7 +16,7 @@
             <a class="nav-link" routerLink="/add" routerLinkActive="active">Aggiungi un libro</a>
           </li>
         </ul>
-         <ul class="nav navbar-nav navbar-right" *ngIf="isLoggedIn()">
+         <ul class="nav navbar-nav navbar-right" *ngIf="!isLoggedOut()">
           <li class="nav-item">
             <a href="" class="nav-link" routerLink="/profile" routerLinkActive="active">Il mio profilo</a>
           </li>

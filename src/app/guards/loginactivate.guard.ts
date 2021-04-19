@@ -11,9 +11,26 @@ export class LoginActivate implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean>|Promise<boolean>|boolean {
-    if (!this.authService.isLoggedIn()) {
+
+    let idToken: string = this.authService.getToken();
+
+    if (idToken && this.authService.isTokenExpired(idToken)){
+      
+      //console.log('il token esiste ma è scaduto');
+
+      this.authService.refreshToken().subscribe(
+        () => {
+          //console.log('il token è stato aggiornato')
+          return true;
+        }
+      )      
+    } else if (idToken && !this.authService.isTokenExpired(idToken)) {
+      return true;
+    } else {
       this.router.navigate(['login']);
     }
-    return true;
+
+    return true; 
+
   }
 }

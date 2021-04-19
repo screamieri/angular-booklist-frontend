@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/service/auth-service/auth.service';
 import { UserService } from 'src/app/service/user-service/user.service';
 import {Book} from '../../model/classes/book.model';
 import { BookService } from '../../service/book-service/book.service';
@@ -13,13 +14,15 @@ export class BookListComponent implements OnInit {
   userId : string;
   books : Book[];
 
-  constructor(private bookService: BookService, private userService: UserService) {    
+  constructor(private bookService: BookService, private userService: UserService, private authService: AuthService) {    
   }
 
 
   ngOnInit() {
     this.userId = this.userService.getUserId();
     this.bookService.getAllBooksByUserId(this.userId).subscribe(data => this.books = data);   
+    console.log(this.authService.isLoggedIn());
+    console.log('log in state from booklist component = ' + this.authService.isLoggedIn())
   }
 
   

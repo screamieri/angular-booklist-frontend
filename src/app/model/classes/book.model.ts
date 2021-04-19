@@ -46,13 +46,9 @@ export class Book implements Book {
             this.genre = 'undefined';
         }
 
-
         this.description = responseItem.volumeInfo.description ?? 'undefined';
 
-
         this.publishDate = new Date(responseItem.volumeInfo.publishedDate);
-
-
 
         if (typeof responseItem.volumeInfo.imageLinks !== 'undefined') {
             this.imageUrl = responseItem.volumeInfo.imageLinks.thumbnail;

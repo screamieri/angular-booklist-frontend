@@ -8,8 +8,8 @@ import { LoginActivate } from './guards/loginactivate.guard';
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'books', component: BookListComponent, data:{requiresLogin: true}, canActivate:[LoginActivate]},
-  { path:'add', component: AddBookComponent, data:{requiresLogin: true}, canActivate:[LoginActivate]},
-  { path: '', component: LoginComponent}
+  { path:'add', component: AddBookComponent,  data:{requiresLogin: true}, canActivate:[LoginActivate]},
+  { path: '**', component: LoginComponent}
 ];
 
 @NgModule({

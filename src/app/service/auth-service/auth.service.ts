@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { iUser } from 'src/app/model/model-interface/iuser.model';
 import { shareReplay, tap  } from 'rxjs/operators';
@@ -14,7 +14,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string) {
+  login(username: string, password: string): Observable<any> {
     return this.http
       .post<iUser>('http://localhost:8080/authenticate', { username, password }).pipe(
         tap(res => this.setSession(res)),
@@ -22,26 +22,32 @@ export class AuthService {
       )      
   }
 
-  refrershToken(){
-    return this.http.post<iUser>('http://localhost:8080/refresh', {responseType: 'text' as 'json'}).pipe(
-      tap(res => this.setSession(res)),
-      shareReplay()
-    )
+  refreshToken(): Observable<{token: string}>{
+      
+      let headers = new HttpHeaders({
+        'Authorization': 'Bearer ' + this.getToken(),
+        'isRefreshToken': 'true'
+      })
+      
+       return this.http.get<{token: string}>('http://localhost:8080/refreshtoken', {headers: headers}).pipe(
+        tap(res => this.setSession(res)),
+        shareReplay()
+       );
   }
 
   private setSession(authResult) {
 
-    let tokenInfo = this.getDecodedAccessToken(authResult.token);    
-    //const expiresAt = moment().add(authResult.expires_at, 'second');
-    //console.log(tokenInfo.exp);
-    //const expiresAt = moment().add(tokenInfo.exp, 'second');
-    //console.log(JSON.stringify(expiresAt.valueOf()));
+    let tokenInfo = this.getDecodedAccessToken(authResult.token);   
     const expiresAt = moment(tokenInfo.exp);
 
     localStorage.setItem('id_token', authResult.token);
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
     localStorage.setItem('userId', tokenInfo.userId);
 
+  }
+
+  getToken(): string{
+    return localStorage.getItem('id_token');
   }
 
   logout() {
@@ -51,7 +57,7 @@ export class AuthService {
   }
 
   public isLoggedIn() {
-    return moment().isBefore(this.getExpiration());
+    return moment().isBefore(this.getExpiration());   
   }
 
   isLoggedOut() {
@@ -63,6 +69,28 @@ export class AuthService {
     const expiresAt = JSON.parse(expiration);
     return moment.unix(expiresAt);
   }
+
+  isTokenExpired(token: string): boolean{
+    const [encodedHeader, encodedPayload, encodedSignature] = token.split('.');
+    const payload = JSON.parse(atob(encodedPayload));
+    const expiryTimestamp = payload.exp;
+    const currentTimestamp = Math.floor((new Date).getTime()/1000);
+    return currentTimestamp >= expiryTimestamp;
+  }
+
+  isTokenExpiredEmbedded(): boolean{
+    const token = this.getToken();
+    const [encodedHeader, encodedPayload, encodedSignature] = token.split('.');
+    const payload = JSON.parse(atob(encodedPayload));
+    const expiryTimestamp = payload.exp;
+    const currentTimestamp = Math.floor((new Date).getTime()/1000);
+    return currentTimestamp >= expiryTimestamp;
+  }
+
+  setAccessToken(token: string): void{
+    localStorage.setItem('id_token', token);
+  }
+
 
   getDecodedAccessToken(token: string): any {
     try{
