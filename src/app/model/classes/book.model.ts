@@ -12,6 +12,7 @@ export class Book implements Book {
     description: string;
     publishDate: Date;
     imageUrl: string;
+    pageCount: number;
 
     constructor(responseItem: Item) {
         if(responseItem.volumeInfo.industryIdentifiers !== undefined){
@@ -45,6 +46,8 @@ export class Book implements Book {
         } else {
             this.genre = 'undefined';
         }
+
+        this.pageCount = responseItem.volumeInfo.pageCount ?? 0;
 
         this.description = responseItem.volumeInfo.description ?? 'undefined';
 

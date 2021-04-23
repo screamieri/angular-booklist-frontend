@@ -10,4 +10,5 @@ export interface VolumeInfo{
     industryIdentifiers: IndustryIdentifier[];
     categories: string[];
     imageLinks: ImageLinks;
+    pageCount: number;
 }

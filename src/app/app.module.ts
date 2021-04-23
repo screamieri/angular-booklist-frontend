@@ -20,8 +20,8 @@ import { AddBookSearchComponent } from './views/add-book/add-book-search/add-boo
 import { BookApiService } from './service/book-api-service/book-api.service';
 import { PlaceholderComponent } from './shared/placeholder/placeholder/placeholder.component';
 import { LoginComponent } from './views/login/login/login.component';
-import { AuthService } from './service/auth-service/auth.service';
-import { AuthInterceptor } from './service/auth.interceptor';
+import { AuthService } from './service/authentication-service/auth.service';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LoginActivate } from './guards/loginactivate.guard';
 
 @NgModule({

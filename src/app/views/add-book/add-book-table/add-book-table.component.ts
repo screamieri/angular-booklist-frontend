@@ -19,13 +19,11 @@ export class AddBookTableComponent implements OnInit {
   constructor(private bookService: BookService, private userService: UserService) {  }
 
   ngOnInit() {
-    this.userId = this.userService.getUserId();
+    this.userId = this.userService.getUserId();    
   }
 
   onBookAddToLibrary(book: Book){
-      this.bookService.addBookToLibrary(this.userId, book).subscribe(
-        data => console.log(data)
-      );
+      this.bookService.addBookToLibrary(this.userId, book).subscribe();
   }
 
 

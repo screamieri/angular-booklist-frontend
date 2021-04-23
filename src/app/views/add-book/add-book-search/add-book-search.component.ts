@@ -19,7 +19,8 @@ export class AddBookSearchComponent implements OnInit {
   onChange(title: string) {
     this.bookApiService.getBooksByTitle(title)
     .subscribe(data=> {
-      this.bookApiService.booksEmitted.emit(data);
+      //this.bookApiService.booksEmitted.emit(data);
+      this.bookApiService.changeBooksFromApi(data);
     });
   }
 

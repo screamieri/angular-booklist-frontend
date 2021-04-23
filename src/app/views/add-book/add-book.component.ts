@@ -17,7 +17,7 @@ export class AddBookComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.bookApiService.booksEmitted.subscribe(
+    this.bookApiService.apiBookDataSource$.subscribe(
       data => this.booksToDisplay = data
     )
   }

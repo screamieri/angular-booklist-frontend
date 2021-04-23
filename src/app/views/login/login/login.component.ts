@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/service/auth-service/auth.service';
+import { AuthService } from 'src/app/service/authentication-service/auth.service';
+import { UserService } from 'src/app/service/user-service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
     const val = this.form.value;
 
     if (val.email && val.password) {
-      this.authService.login(val.email, val.password).subscribe(() => {
+      this.authService.login(val.email, val.password).subscribe(() => {        
         this.router.navigateByUrl('/books');
       });
     }

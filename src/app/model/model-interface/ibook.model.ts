@@ -10,5 +10,6 @@ export interface iBook{
     description: string;
     publishDate : Date;
     imageUrl : string;
+    pageCount: number;
 
 }

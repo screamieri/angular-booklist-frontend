@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { iUser } from '../model/model-interface/iuser.model';
-import { AuthService } from '../service/auth-service/auth.service';
+import { AuthService } from '../service/authentication-service/auth.service';
 import { UserService } from '../service/user-service/user.service';
 import * as moment from 'moment';
 
