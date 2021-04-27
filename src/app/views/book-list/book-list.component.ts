@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/service/authentication-service/auth.service';
 import { UserService } from 'src/app/service/user-service/user.service';
 import {Book} from '../../model/classes/book.model';
@@ -9,23 +10,37 @@ import { BookService } from '../../service/book-service/book.service';
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css']
 })
-export class BookListComponent implements OnInit {
+export class BookListComponent implements OnInit, OnDestroy {
 
   userId : string;
   books : Book[];
+  booksSubscription: Subscription;
 
   constructor(private bookService: BookService, private userService: UserService, private authService: AuthService) {    
   }
 
 
   ngOnInit() {
-    this.userId = this.userService.getUserId();
-    this.bookService.getAllBooksByUserId(this.userId).subscribe(data => {
-      this.books = data;
-      console.log(data)
+
+    this.booksSubscription = this.bookService.books$.subscribe(
+      books => {
+        this.books = books;
+      }
+    )
+    
+    /*this.userId = this.userService.getUserId();
+
+    this.bookService.userBooksDataSource$.subscribe(data => {
+      this.books = data
     });
+    
+    this.bookService.getAllBooksByUserId().subscribe();
+    */
+        
   }
 
-  
+  ngOnDestroy() {
+    this.booksSubscription.unsubscribe();
+  }
 
 }

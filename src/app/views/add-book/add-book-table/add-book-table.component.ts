@@ -23,7 +23,7 @@ export class AddBookTableComponent implements OnInit {
   }
 
   onBookAddToLibrary(book: Book){
-      this.bookService.addBookToLibrary(this.userId, book).subscribe();
+      this.bookService.addBookToLibrary(book);
   }
 
 

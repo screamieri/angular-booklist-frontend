@@ -1,3 +1,5 @@
+import { iBookDetails } from "./ibookdetails.model";
+
 export interface iBook{
 
     id : string;
@@ -11,5 +13,6 @@ export interface iBook{
     publishDate : Date;
     imageUrl : string;
     pageCount: number;
+    details: iBookDetails;
 
 }
