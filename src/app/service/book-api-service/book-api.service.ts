@@ -11,9 +11,8 @@ import { map, toArray } from 'rxjs/operators';
 export class BookApiService {
   requestUrl: string = 'https://www.googleapis.com/books/v1/volumes';
 
-  apiBookDataSource$: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>(
-    null
-  );
+  private apiBookDataSource$: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>(null);
+  apiBooks$ = this.apiBookDataSource$.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -25,7 +24,7 @@ export class BookApiService {
       .pipe(map((response) => response.items.map((item) => new Book(item))));
   }
 
-  changeBooksFromApi(books: Book[]) {
+  updateApiBookList(books: Book[]) {
     this.apiBookDataSource$.next(books);
   }
 }
