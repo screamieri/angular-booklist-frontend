@@ -14,7 +14,7 @@
     <tr *ngFor="let book of books | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
       <td class="text-center"><img src="{{book.imageUrl}}" alt=""></td>
       <th scope="row" class="text-center">{{book.title}}</th>
-      <th scope="row" class="text-center">{{book.publishDate | date:'shortDate'}}</th>
+      <th scope="row" class="text-center">{{book.publishDate | date: 'dd/MM/yyyy'}}</th>
       <td class="text-center">{{book.author}}</td>
       <td class="text-center">{{book.genre}}</td>
       <td class="text-center"><button class="btn btn-primary" (click)="onBookAddToLibrary(book)">Aggiungi ai tuoi libri</button></td>

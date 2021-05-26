@@ -1,29 +1,61 @@
+<!-- Sidebar -->
+<div class="bg-light border-right" id="sidebar-wrapper">
+  <div class="sidebar-heading">Start Bootstrap </div>
+  <div class="list-group list-group-flush" *ngIf="isLoggedOut()">
+    <a href="#" class="list-group-item list-group-item-action bg-light" routerLink="/login" routerLinkActive="active">Login</a>
+  </div>
+  <div class="list-group list-group-flush" *ngIf="!isLoggedOut()">
+    <a href="#" class="list-group-item list-group-item-action bg-light" routerLink="/books" routerLinkActive="active">I Miei Libri</a>
+    <a href="#" class="list-group-item list-group-item-action bg-light" routerLink="/books/add" routerLinkActive="active">Aggiungi un libro</a>
+    <a href="#" class="list-group-item list-group-item-action bg-light" routerLink="/profile" routerLinkActive="active">Il mio profilo</a>
+    <a href="#" class="list-group-item list-group-item-action bg-light" (click)="logout()">Logout</a>
+  </div>
+</div>
+<!-- /#sidebar-wrapper -->
+
+
+<!-- 
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
   <div class="container">
-    <a href="#" class="navbar-brand"  routerLink="/" routerLinkActive="active">BookList App</a>
+    <a href="#" class="navbar-brand" routerLink="/" routerLinkActive="active"
+      >BookList App</a
+    >
     <div class="container-fluid" id="navbarNav">
       <ul class="nav navbar-nav" *ngIf="isLoggedOut()">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+          <a class="nav-link" routerLink="/login" routerLinkActive="active"
+            >Login</a
+          >
         </li>
       </ul>
-      
-      <ul class="nav navbar-nav" *ngIf="!isLoggedOut()" >
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/books" routerLinkActive="active">I miei libri</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/add" routerLinkActive="active">Aggiungi un libro</a>
-          </li>
-        </ul>
-         <ul class="nav navbar-nav navbar-right" *ngIf="!isLoggedOut()">
-          <li class="nav-item">
-            <a href="" class="nav-link" routerLink="/profile" routerLinkActive="active">Il mio profilo</a>
-          </li>
-          <li class="nav-item">
-            <a href="" class="nav-link" (click)="logout()">Logout</a>
-          </li>
-        </ul>
-      </div>
+
+      <ul class="nav navbar-nav" *ngIf="!isLoggedOut()">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/books" routerLinkActive="active"
+            >I miei libri</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/add" routerLinkActive="active"
+            >Aggiungi un libro</a
+          >
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="!isLoggedOut()">
+        <li class="nav-item">
+          <a
+            href=""
+            class="nav-link"
+            routerLink="/profile"
+            routerLinkActive="active"
+            >Il mio profilo</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="" class="nav-link" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
+-->

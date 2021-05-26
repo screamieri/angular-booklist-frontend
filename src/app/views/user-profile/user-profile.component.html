@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-2 flex-container">
+            <div class="user-group row mb-3">
+                <span class="label-text col-md-12">
+                    Nome
+                </span>
+                <span class="info-text col-md-12">
+                    Andrea
+                </span>
+            </div>            
+            <div class="user-group row mb-3">
+                <span class="label-text col-md-12">
+                    Cognome
+                </span>
+                <span class="info-text col-md-12">
+                    Giorgietti
+                </span>
+            </div>
+            <div class="user-group row mb-3">
+                <span class="label-text col-md-12">
+                    Indirizzo Email
+                </span>
+                <span class="info-text col-md-12">
+                    test@Andrea.it
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 mb-3 mt-3">
+        <h3 class="pl-3">Le mie statistiche</h3>
+    </div>
+    <div class="col-md-6 d-flex">
+        <app-stat-cards class="col-md-6" [icon]="faBookOpen" [subText]="'Libri letti'" [stat]="33"></app-stat-cards>
+        <app-stat-cards class="col-md-6" [icon]="faFile" [subText]="'Pagine lette'" [stat]="550"></app-stat-cards>
+        <app-stat-cards class="col-md-6" [icon]="faLayerGroup" [subText]="'Libri aggiunti nella libreria'" [stat]="65"></app-stat-cards>
+        <app-stat-cards class="col-md-6" [icon]="faReview" [subText]="'Media recensioni'" [stat]="4"></app-stat-cards>        
+    </div>
+</div>

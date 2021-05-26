@@ -19,6 +19,7 @@ export class LoginActivate implements CanActivate {
     let idToken: string = this.authService.getToken();
 
     if (idToken && this.authService.isTokenExpired(idToken)) {
+      console.log(1)
       //console.log('il token esiste ma è scaduto');
 
       this.authService.refreshToken().subscribe(() => {
@@ -26,8 +27,10 @@ export class LoginActivate implements CanActivate {
         return true;
       });
     } else if (idToken && !this.authService.isTokenExpired(idToken)) {
+      console.log(2)
       return true;
     } else {
+      console.log(3)
       this.router.navigate(['login']);
     }
 

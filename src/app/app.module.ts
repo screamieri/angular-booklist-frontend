@@ -23,6 +23,10 @@ import { LoginComponent } from './views/login/login/login.component';
 import { AuthService } from './service/authentication-service/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LoginActivate } from './guards/loginactivate.guard';
+import { BookDetailComponent } from './views/book-list/book-detail/book-detail.component';
+import { UserProfileComponent } from './views/user-profile/user-profile.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { StatCardsComponent } from './views/user-profile/stat-cards/stat-cards.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,10 @@ import { LoginActivate } from './guards/loginactivate.guard';
     AddBookSearchComponent,
     AddBookTableComponent,
     PlaceholderComponent,
-    LoginComponent
+    LoginComponent,
+    BookDetailComponent,
+    UserProfileComponent,
+    StatCardsComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,8 @@ import { LoginActivate } from './guards/loginactivate.guard';
     RouterModule,
     CommonModule,
     NgxPaginationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [UserService, BookService, BookApiService, AuthService, LoginActivate,
   {

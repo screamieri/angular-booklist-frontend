@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="mb-3">{{book?.title}}</h3>
+        <div class="book-details d-flex">
+            <div class="p-2"><img src="{{book?.imageUrl}}" alt=""></div>
+            <div class="book-user-details row p-2" >
+                <span class="col-md-12" *ngIf="book?.details.currentPage">Current Page: {{book?.details.currentPage}}</span>
+                <span class="col-md-12" *ngIf="book?.details.dateAdded">Aggiunto alla liberia il: {{book?.details.dateAdded | date: 'dd/MM/yyyy' }}</span>
+                <span class="col-md-12" *ngIf="book?.details.rating">La tua valutazione: {{book?.details.rating }}</span>
+                <span class="col-md-12" *ngIf="book?.details.readAt">Lettura terminata il: {{book?.details.readAt | date: 'dd/MM/yyyy' }}</span>
+                <span class="col-md-12" *ngIf="book?.details.status">Stato libro: {{book?.details.status}}</span>
+            </div>
+        </div>
+        <div class="p-2 mb-3 col-md-9 text-justify">{{book?.description}}</div>
+        <button class="btn btn-danger p-2" (click)="removeBook()">Rimuovi dalla tua libreria</button>
+    </div>
+</div>
+
+
+

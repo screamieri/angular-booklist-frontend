@@ -19,11 +19,15 @@ export class BookService {
   private userBooksDataSource$: BehaviorSubject<iBook[]> = new BehaviorSubject<iBook[]>(null);
   books$ = this.userBooksDataSource$.asObservable();
 
+  private bookToDisplay$: BehaviorSubject<iBook> = new BehaviorSubject<iBook>(null);
+  bookDetail$ = this.bookToDisplay$.asObservable();
+
 
   constructor(private http: HttpClient, private userService: UserService) {  
     this.userId = this.userService.getUserId();
     this.getAllBooksByUser();
   }
+
 
   getAllBooksByUser(){
     return this.http.get<iBook[]>(`${this.requestUrl}${this.userId}/books/`)
@@ -49,6 +53,10 @@ export class BookService {
     );
   }
 
+
+  updateBookToDisplay(book: iBook){
+    this.bookToDisplay$.next(book);
+  }
   
   
 }

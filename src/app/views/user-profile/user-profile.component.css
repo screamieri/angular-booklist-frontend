@@ -1,0 +1,11 @@
+.flex-container{
+    flex-direction: column;
+}
+
+.label-text{
+    font-size: 1.2rem;
+}
+
+.info-text{
+    font-size: 2.2rem;
+}
